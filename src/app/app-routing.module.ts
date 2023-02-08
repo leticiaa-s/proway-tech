@@ -8,12 +8,15 @@ const routes: Routes = [
     loadChildren: () => import('./produtos/produtos.module').then(m => m.ProdutosModule) 
   },
   {
-    path: "",
+    path: '',
     redirectTo: 'produtos',
     pathMatch: 'full'
   },
+  { path: 'carrinho',
+    loadChildren: () => import('./carrinho/carrinho.module').then(m => m.CarrinhoModule) 
+  },
   {
-    path: "**",
+    path: '**',
     component: NaoEncontradaComponent
   }
 ];

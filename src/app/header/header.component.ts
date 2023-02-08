@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    public carrinhoService: CarrinhoService
+    public carrinhoService: CarrinhoService //para atualizar a badge do carrinho
   ) { }
 
   ngOnInit(): void {
