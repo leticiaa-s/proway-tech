@@ -19,9 +19,6 @@
     background-color: var(--blue);
     border: none;
     color: white;
-    font-size: 20px;
-    padding: 6px 12px;
-    width: 200px;
 }
 
 .contact-form button:hover {
@@ -45,4 +42,13 @@ textarea{
 
 .contact-form button:disabled:hover {
     filter: none;
+}
+
+input.ng-invalid.ng-touched {
+    color: red;
+}
+
+small{
+    color: red;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
