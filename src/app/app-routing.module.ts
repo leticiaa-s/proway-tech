@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'carrinho',
     loadChildren: () => import('./carrinho/carrinho.module').then(m => m.CarrinhoModule) 
   },
+  { path: 'contato', loadChildren: () => import('./contato/contato.module').then(m => m.ContatoModule) },
   {
     path: '**',
     component: NaoEncontradaComponent
