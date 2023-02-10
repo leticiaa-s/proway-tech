@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { ProdutosService } from './../produtos.service';
 import { Produto } from './../produtos';
 import { Component, OnInit } from '@angular/core';
@@ -12,46 +13,22 @@ export class ProdutosComponent implements OnInit {
   produtos?: Produto[];
   
   constructor(
-    private produtoService: ProdutosService
+    private produtoService: ProdutosService,
+    private route: ActivatedRoute //captar os query parametros da rota
   ) { }
 
   ngOnInit(): void {
-    this.produtos = this.produtoService.getAll(); 
+    
+    const produtos = this.produtoService.getAll(); //obter todos os produtos para aplicar o filtro
+    
+    this.route.queryParamMap.subscribe(params => {  //pega os parametros da rota
+      const descricao = params.get("descricao")?.toLowerCase(); //transformando o texto digitado na busca em lower case
+      if (descricao){
+        this.produtos = produtos.filter(produto => produto.descricao.toLowerCase().includes(descricao)); //determina se um array contém um determinado elemento
+        return;
+      }
+      this.produtos = produtos;
+    });
   }
 
 }
-
-// import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute } from '@angular/router';
-// import { Produto, produtos } from '../produtos';
-// import { ProdutosService } from '../produtos.service';
-
-// @Component({
-//   selector: 'app-produtos',
-//   templateUrl: './produtos.component.html',
-//   styleUrls: ['./produtos.component.css']
-// })
-// export class ProdutosComponent implements OnInit {
-
-//   produtos: Produto[] | undefined;
-  
-//   constructor(
-//     private produtoService: ProdutosService,
-//     private route: ActivatedRoute
-//   ) { }
-
-//   ngOnInit(): void {
-//     const produtos = this.produtoService.getAll();
-//     this.route.queryParamMap.subscribe(params => {
-//       const descricao = params.get("descricao")?.toLowerCase();
-
-//       if (descricao) {
-//         this.produtos = produtos.filter(produto => produto.descricao.toLowerCase().includes(descricao));
-//         return;
-//       }
-
-//       this.produtos = produtos;
-//     })
-//   }
-
-// }
