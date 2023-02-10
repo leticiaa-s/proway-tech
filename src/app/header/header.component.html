@@ -10,7 +10,8 @@
             </li>
             <li>
                 <a routerLink="carrinho">
-                    <i class="fa-solid fa-cart-shopping"></i>                    Carrinho</a>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Carrinho</a>
                 <span class="badge-carrinho">{{ carrinhoService.obterCarrinho().length }}</span>
             </li>
             <li><a routerLink="contato">Contato</a></li>
@@ -19,9 +20,8 @@
             <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
         </ul>
     </nav>
-    <form class="search-form">
-        <input type="text">
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
+    <app-barra-pesquisa></app-barra-pesquisa>
+    <!--novo componente criado para a barra de pesquisa para que o roteamento para a página de produtos
+    seja feito corretamente a partir de qualquer seção do site-->
     </div>
 </header>
